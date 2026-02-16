@@ -5,6 +5,7 @@ import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { TextLoop } from "../../components/motion-primitives/text-loop";
 import { TextEffect } from "../../components/motion-primitives/text-effect";
+import FloatingActions from "./FloatingActions";
 
 interface InteractiveMeshCanvasProps {
   className?: string;
@@ -473,7 +474,7 @@ const Skiper36 = () => {
       </div>
 
 
-      <div className="absolute top-0 h-full w-full">
+      <div className="absolute top-0 h-full w-full ">
         {/* Canvas container */}
         <InteractiveMeshCanvas
           backgroundColor="#FFFFFF"
@@ -492,7 +493,9 @@ const Skiper36 = () => {
       <div className="pointer-events-none absolute bottom-0 left-0 h-2/3 w-full bg-gradient-to-t from-[#393939] via-[#444444]/50 to-transparent" />
       {/* Footer */}
       <div className="z-90 absolute bottom-6 flex w-full flex-col items-center justify-center gap-5 text-[#a4a4a4]">
+
         <div className="relative">
+          <FloatingActions />
           <p className="absolute right-0 top-0 text-right text-sm font-semibold leading-[1.1] tracking-tighter">
             click on the grid to start adding <br />
             blocks to the canvas
