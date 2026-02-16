@@ -1,17 +1,26 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { HiOutlineDocumentDownload, HiCheck } from "react-icons/hi";
+import { motion } from "framer-motion";
+import {
+    HiOutlineDocumentDownload,
+    HiMail,
+} from "react-icons/hi";
+import {
+    FaLinkedin,
+    FaInstagram,
+    FaTwitter,
+    FaArtstation,
+} from "react-icons/fa";
 import { Loader2 } from "lucide-react";
 
-export default function DownloadButton() {
-    const [state, setState] = useState("idle");
+export default function FloatingActions() {
+    const [downloading, setDownloading] = useState(false);
 
     const handleDownload = () => {
-        if (state !== "idle") return;
+        if (downloading) return;
 
-        setState("loading");
+        setDownloading(true);
 
         setTimeout(() => {
             const link = document.createElement("a");
@@ -22,58 +31,106 @@ export default function DownloadButton() {
             link.click();
             document.body.removeChild(link);
 
-            setState("done");
-            setTimeout(() => setState("idle"), 2000);
-        }, 1200);
+            setTimeout(() => setDownloading(false), 2000);
+        }, 1000);
+    };
+
+    const ExpandButton = ({ icon, text, onClick, href }) => {
+        return (
+            <motion.a
+                initial="rest"
+                whileHover="hover"
+                animate="rest"
+                variants={{
+                    rest: { width: 48 },
+                    hover: { width: 170 },
+                }}
+                transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                onClick={onClick}
+                href={href}
+                target={href ? "_blank" : undefined}
+                rel={href ? "noopener noreferrer" : undefined}
+                className="
+      flex items-center
+      overflow-hidden
+      h-12
+      bg-[#404040]/90
+      text-white
+      rounded-l-md
+      border border-white/10 border-r-[5px] border-r-red-700
+shadow-[2px_0_12px_rgba(255,255,255,0.25)]
+    "
+            >
+                {/* Icon */}
+                <div className="flex items-center justify-center min-w-[48px]">
+                    {icon}
+                </div>
+
+                {/* Text */}
+                <motion.span
+                    variants={{
+                        rest: { opacity: 0, x: -10 },
+                        hover: { opacity: 1, x: 0 },
+                    }}
+                    transition={{
+                        duration: 0.2,
+                        delay: 0.15, // 👈 text appears AFTER expand starts
+                    }}
+                    className="whitespace-nowrap pr-4 font-mono text-sm"
+                >
+                    {text}
+                </motion.span>
+            </motion.a>
+
+        );
     };
 
     return (
-        <div className="fixed bottom-10 right-10 z-[9999]">
-            <motion.button
+        <div className="fixed bottom-8 right-8 z-[9999] flex flex-col items-end gap-3 w-[170px]">
+
+            <ExpandButton
+                text={downloading ? "Downloading..." : "Download CV"}
                 onClick={handleDownload}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.96 }}
-                className="
-          flex items-center gap-2
-          bg-[#404040]/90
-          text-white
-          px-3 py-2
-          rounded-lg
-          border border-white/30
-          backdrop-blur-md
-          shadow-lg
-          hover:bg-[#505050]
-          transition
-          font-mono
-          text-xl
-        "
-            >
-                <span>
-                    {state === "idle" && "Download"}
-                    {state === "loading" && "Downloading"}
-                    {state === "done" && "All Set"}
-                </span>
+                icon={
+                    downloading ? (
+                        <Loader2 size={20} className="animate-spin" />
+                    ) : (
+                        <HiOutlineDocumentDownload size={20} />
+                    )
+                }
+            />
 
-                <AnimatePresence mode="wait">
-                    {state === "idle" && (
-                        <motion.div key="d" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-                            <HiOutlineDocumentDownload size={22} />
-                        </motion.div>
-                    )}
+            <ExpandButton
+                text="LinkedIn"
+                href="https://linkedin.com/in/YOUR_ID"
+                icon={<FaLinkedin size={20} />}
+            />
 
-                    {state === "loading" && (
-                        <motion.div key="l" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-                            <Loader2 size={22} className="animate-spin" />
-                        </motion.div>
-                    )}
+            <ExpandButton
+                text="ArtStation"
+                href="https://artstation.com/YOUR_ID"
+                icon={<FaArtstation size={20} />}
+            />
 
-                    {state === "done" && (
-                        <motion.div key="c" initial={{ scale: 0 }} animate={{ scale: 1 }}>
-                            <HiCheck size={22} />
-                        </motion.div>
-                    )}
-                </AnimatePresence>
-            </motion.button>
+            <ExpandButton
+                text="Instagram"
+                href="https://instagram.com/YOUR_ID"
+                icon={<FaInstagram size={20} />}
+            />
+
+            <ExpandButton
+                text="Twitter"
+                href="https://twitter.com/YOUR_ID"
+                icon={<FaTwitter size={20} />}
+            />
+
+            <ExpandButton
+                text="Contact Me"
+                href="mailto:your@email.com"
+                icon={<HiMail size={20} />}
+            />
+
         </div>
     );
+
 }

@@ -385,18 +385,30 @@ const Skiper36 = () => {
     <div className="relative flex h-full w-full flex-col justify-end overflow-hidden bg-[#383838] text-[#383838]">
       {/* Instructions */}
       <div>
-        <div className="absolute left-8 top-20 z-10 pl-8 rounded-xl bg-black/10 px-3 py-2 font-mono text-6xl text-[#000000] backdrop-blur-sm">
+        <div className="
+  absolute left-8 top-20 z-10 pl-6
+  rounded-xl
+  bg-black/10
+  px-3 py-2
+  font-mono text-6xl text-[#000000]
+  backdrop-blur-sm
+  border border-white/10
+  border-l-[5px] border-l-red-700
+  shadow-[0_0_20px_rgba(220,38,38,0.15)]
+">
           <span className="block">Hello I'm</span>
           <span className="block">Gyanendra Pal Singh</span>
         </div>
 
-        <div className="absolute left-8 top-60 z-10 pl-8 rounded-xl bg-black/10 px-3 py-2 font-mono text-3xl text- text-[#000000] backdrop-blur-sm">
-          I'm a <TextLoop className='font-mono text-4xl'>
+        <div className="absolute left-8 top-60 z-10 pl-8 rounded-xl bg-black/10 px-3 py-2 font-mono text-3xl text- text-[#000000] backdrop-blur-sm border-l-[5px] border-l-red-700
+  shadow-[0_0_20px_rgba(220,38,38,0.15)">
+          I'm a <span className="mx-2 text-red-600 font-bold text-4xl">|</span><TextLoop className='font-mono text-4xl'>
             <span>Software Developer</span>
             <span>3D Artist</span>
           </TextLoop>
         </div>
-        <div className="absolute left-8 top-80 z-10 pl-8 rounded-xl bg-black/10 px-3 py-2 font-mono text-3xl text- text-[#000000] backdrop-blur-sm">
+        <div className="absolute left-8 top-80 z-10 pl-8 rounded-xl bg-black/10 px-3 py-2 font-mono text-3xl text- text-[#000000] backdrop-blur-sm border-l-[5px] border-l-red-700
+  shadow-[0_0_20px_rgba(220,38,38,0.15)">
           <TextEffect
             per='char'
             delay={0.5}
