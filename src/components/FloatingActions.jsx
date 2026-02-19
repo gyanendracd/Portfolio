@@ -36,11 +36,13 @@ export default function FloatingActions() {
     };
 
     const ExpandButton = ({ icon, text, onClick, href }) => {
+        const isDownload = text?.toLowerCase().includes("download");
+
         return (
             <motion.a
-                initial="rest"
+                initial={isDownload ? "hover" : "rest"}
+                animate={isDownload ? "hover" : "rest"}
                 whileHover="hover"
-                animate="rest"
                 variants={{
                     rest: { width: 48 },
                     hover: { width: 170 },
@@ -50,16 +52,8 @@ export default function FloatingActions() {
                 href={href}
                 target={href ? "_blank" : undefined}
                 rel={href ? "noopener noreferrer" : undefined}
-                className="
-      flex items-center
-      overflow-hidden
-      h-12
-      bg-[#404040]/90
-      text-white
-      rounded-l-md
-      border border-white/10 border-r-[5px] border-r-red-700
-shadow-[2px_0_12px_rgba(255,255,255,0.25)]
-    "
+                className="flex items-center overflow-hidden h-12 bg-[#404040]/90 text-white rounded-l-md border border-white/10 border-r-[5px]
+                       border-r-red-700 shadow-[2px_0_12px_rgba(255,255,255,0.25)] hover:cursor-pointer active:cursor-grabbing"
             >
                 {/* Icon */}
                 <div className="flex items-center justify-center min-w-[48px]">
@@ -74,16 +68,16 @@ shadow-[2px_0_12px_rgba(255,255,255,0.25)]
                     }}
                     transition={{
                         duration: 0.2,
-                        delay: 0.15, // 👈 text appears AFTER expand starts
+                        delay: 0.15,
                     }}
                     className="whitespace-nowrap pr-4 font-mono text-sm"
                 >
                     {text}
                 </motion.span>
             </motion.a>
-
         );
     };
+
 
     return (
         <div className="fixed bottom-8 right-8 z-[9999] flex flex-col items-end gap-3 w-[170px]">

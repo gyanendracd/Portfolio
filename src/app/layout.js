@@ -1,7 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import { DrawingCursorEffect } from "@/components/skiper59";
 import "./globals.css";
-import FloatingActions from "@/components/FloatingActions";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

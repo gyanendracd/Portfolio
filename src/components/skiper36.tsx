@@ -54,19 +54,19 @@ const InteractiveMeshCanvas = ({
   // Initial cubes
   initialCubesCount = 4,
 }: InteractiveMeshCanvasProps) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
-  const sceneRef = useRef<THREE.Scene | null>(null);
-  const cameraRef = useRef<THREE.PerspectiveCamera | null>(null);
-  const raycasterRef = useRef<THREE.Raycaster | null>(null);
-  const pointerRef = useRef<THREE.Vector2 | null>(null);
-  const rollOverMeshRef = useRef<THREE.Mesh | null>(null);
-  const planeRef = useRef<THREE.Mesh | null>(null);
-  const objectsRef = useRef<THREE.Object3D[]>([]);
+  const containerRef = useRef < HTMLDivElement > (null);
+  const rendererRef = useRef < THREE.WebGLRenderer | null > (null);
+  const sceneRef = useRef < THREE.Scene | null > (null);
+  const cameraRef = useRef < THREE.PerspectiveCamera | null > (null);
+  const raycasterRef = useRef < THREE.Raycaster | null > (null);
+  const pointerRef = useRef < THREE.Vector2 | null > (null);
+  const rollOverMeshRef = useRef < THREE.Mesh | null > (null);
+  const planeRef = useRef < THREE.Mesh | null > (null);
+  const objectsRef = useRef < THREE.Object3D[] > ([]);
   const isShiftDownRef = useRef(false);
-  const cubeGeoRef = useRef<THREE.BoxGeometry | null>(null);
-  const cubeMaterialRef = useRef<THREE.MeshLambertMaterial | null>(null);
-  const animationIdRef = useRef<number | null>(null);
+  const cubeGeoRef = useRef < THREE.BoxGeometry | null > (null);
+  const cubeMaterialRef = useRef < THREE.MeshLambertMaterial | null > (null);
+  const animationIdRef = useRef < number | null > (null);
 
   // Memoize props to prevent unnecessary re-renders
   const memoizedProps = useMemo(
