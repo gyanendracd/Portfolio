@@ -170,8 +170,8 @@ export const PreLoader_006 = () => {
             className="absolute bottom-[10%] left-[10%] rotate-12 cursor-grab overflow-hidden bg-white active:cursor-grabbing"
           >
             <div className="font-geist-mono max-w-[10rem] p-4 text-xl font-medium uppercase leading-[1] tracking-tight text-[#121212]/60">
-              Loaders, <br /> shaders, <br /> great UI/UX <br /> <br />{" "}
-              Collection Sep 2025
+              API, <br /> DATABASE, <br /> great UI/UX <br /> <br />{" "}
+              Collection JAN 2026
             </div>
           </motion.div>
         )}
@@ -194,7 +194,7 @@ export const PreLoader_006 = () => {
             <div className="font-geist-mono p-4 text-xl font-medium uppercase leading-[1] tracking-tight text-[#121212]/60">
               with <Heart className="inline fill-current stroke-0" /> from{" "}
               <br />
-              Punjab, <br />
+              Rajasthan, <br />
               India
             </div>
           </motion.div>
@@ -203,20 +203,3 @@ export const PreLoader_006 = () => {
     </div>
   );
 };
-
-/**
- * Skiper 15 Preloader_006 — React + Framer Motion
- * Inspired by and adapted from https://2022.madebynull.com/
- * We respect the original creators. This is an inspired rebuild with our own taste and does not claim any ownership.
- *
- * License & Usage:
- * - Free to use and modify in both personal and commercial projects.
- * - Attribution to Skiper UI is required when using the free version.
- * - No attribution required with Skiper UI Pro.
- *
- * Feedback and contributions are welcome.
- *
- * Author: @gurvinder-singh02
- * Website: https://gxuri.in
- * Twitter: https://x.com/Gur__vi
- */
